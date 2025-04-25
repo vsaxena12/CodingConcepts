@@ -75,6 +75,30 @@ public class SingleLinkedList {
 
     }
 
+    public Node mergeTwoLists(Node list1, Node list2) {
+
+        Node head = new Node();
+        Node temp = head;
+
+        while(list1 != null && list2 != null) {
+            if(list1.data <= list2.data) {
+                temp.next = list1;
+                list1 = list1.next;
+            } else {
+                temp.next = list2;
+                list2 = list2.next;
+            }
+            temp = temp.next;
+        }
+        
+        if(list1 == null) {
+            temp.next = list2;
+        } else {
+            temp.next = list1;
+        }
+        return head.next;
+    }
+
     public static void main(String[] args) {
         //For linked list, you need to start with the head/ root
         Node head = new Node(10);
@@ -111,5 +135,8 @@ public class SingleLinkedList {
         singleLinkedList3.merge(singleLinkedList2.head, singleLinkedList.head);
         System.out.println("--------------------");
         singleLinkedList3.print();
+
+        SingleLinkedList singleLinkedList4 = new SingleLinkedList();
+        singleLinkedList4.mergeTwoLists(head, head);
     }
 }
