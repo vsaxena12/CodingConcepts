@@ -1,4 +1,4 @@
-package stack;
+package collections.stack;
 
 public class Stack <V> {
 
